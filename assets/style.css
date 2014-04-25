@@ -1,0 +1,124 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  background-color: #333;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.jane {
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+.jane .eyeball {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border: 5px #ffffff solid;
+  -webkit-border-radius: 100%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 100%;
+  -moz-background-clip: padding;
+  border-radius: 100%;
+  background-clip: padding-box;
+  top: 65px;
+}
+.jane .eyeball.left {
+  left: 70px;
+}
+.jane .eyeball.right {
+  right: 70px;
+}
+.jane .pupil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  -webkit-border-radius: 100%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 100%;
+  -moz-background-clip: padding;
+  border-radius: 100%;
+  background-clip: padding-box;
+  background-color: #ffffff;
+}
+.jane .tie {
+  position: absolute;
+  left: 304px;
+  top: 26px;
+  width: 26px;
+  height: 26px;
+  -webkit-transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+  background-color: #ffffff;
+  -webkit-border-radius: 100%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 100%;
+  -moz-background-clip: padding;
+  border-radius: 100%;
+  background-clip: padding-box;
+}
+.jane .tie:before {
+  right: 13px;
+  margin-right: 0.14022369px;
+  border-left: 36.90977631px solid #ffffff;
+}
+.jane .tie:after {
+  left: 13px;
+  margin-left: 0.14022369px;
+  border-right: 36.90977631px solid #ffffff;
+}
+.jane .tie:before,
+.jane .tie:after {
+  content: " ";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 13px;
+  margin-top: -19.5px;
+  border-top: 19.5px solid transparent;
+  border-bottom: 19.5px solid transparent;
+}
+.jane .mouth {
+  position: absolute;
+  top: 250px;
+  left: 156.66666667px;
+  width: 86.66666667px;
+  height: 17.33333333px;
+  -webkit-border-radius: 4.333333333333334px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4.333333333333334px;
+  -moz-background-clip: padding;
+  border-radius: 4.333333333333334px;
+  background-clip: padding-box;
+  background-color: #ffffff;
+}

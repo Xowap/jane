@@ -1,0 +1,138 @@
+@import "../bower_components/lesshat/build/lesshat";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  background-color: #333;
+
+  .display(flex);
+  .justify-content(center);
+  .align-items(center);
+}
+
+* {
+  .box-sizing(border-box);
+}
+
+.jane {
+  @color: white;
+  @face-size: 400px;
+  @face-height: 300px;
+
+  @eye-size: 110px;
+  @eye-to-top: 120px;
+  @eye-gap: 40px;
+  @eye-thickness: 5px;
+
+  @pupil-size: 20px;
+
+  @tie-to-top: (@eye-to-top - @eye-size / 2) * 0.4;
+  @tie-to-left: (@face-size - @eye-gap) / 2 - @eye-size + (2 * @eye-size + @eye-gap) * 0.9;
+  @tie-center-height: @pupil-size * 1.3;
+  @tie-height: @tie-center-height * 1.5;
+  @tie-width: @tie-height * 1.9;
+
+  @mouth-to-top: 250px;
+  @mouth-width: (2 * @eye-size + @eye-gap) / 3;
+  @mouth-height: @mouth-width * 0.2;
+  @mouth-border-radius: @mouth-height * 0.25;
+
+  position: relative;
+  .size(@face-size, @face-height);
+
+  .eyeball {
+    position: absolute;
+
+    .size(@eye-size);
+    border: @eye-thickness @color solid;
+    .border-radius(100%);
+
+    top: @eye-to-top - (@eye-size / 2);
+
+    &.left {
+      left: (@face-size - @eye-gap) / 2 - @eye-size;
+    }
+
+    &.right {
+      right: (@face-size - @eye-gap) / 2 - @eye-size;
+    }
+  }
+
+  .pupil {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    .size(@pupil-size);
+    margin-left: -(@pupil-size / 2);
+    margin-top: -(@pupil-size / 2);
+
+    .border-radius(100%);
+
+    background-color: @color;
+  }
+
+  .tie {
+    @r: @tie-center-height / 2;
+    @W: @tie-width / 2;
+    @H: @tie-height;
+
+    // That one is a bit complex...
+    // The goal is that the triangles intersect the circle at 1/3 of its height
+    @alpha: -(3 * @r * @W - 2 * sqrt(2) * @H * @r) / (3 * (@H - @r));
+
+    position: absolute;
+
+    left: @tie-to-left;
+    top: @tie-to-top;
+    .size(@tie-center-height);
+
+    .transform(rotate(15deg));
+
+    background-color: @color;
+    .border-radius(100%);
+
+    &:before {
+      right: @tie-center-height / 2;
+      margin-right: -@alpha;
+      border-left: (@alpha + @tie-width / 2) solid @color;
+    }
+
+    &:after {
+      left: @tie-center-height / 2;
+      margin-left: -@alpha;
+      border-right: (@alpha + @tie-width / 2) solid @color;
+    }
+
+    &:before, &:after {
+      content: " ";
+      width: 0;
+      height: 0;
+      position: absolute;
+
+      top: @tie-center-height / 2;
+      margin-top: -@tie-height / 2;
+
+      border-top: (@tie-height / 2) solid transparent;
+      border-bottom: (@tie-height / 2) solid transparent;
+    }
+  }
+
+  .mouth {
+    position: absolute;
+
+    top: @mouth-to-top;
+    left: (@face-size - @mouth-width) / 2;
+
+    width: @mouth-width;
+    height: @mouth-height;
+    .border-radius(@mouth-border-radius);
+    background-color: @color;
+  }
+}
