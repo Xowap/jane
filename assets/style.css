@@ -121,4 +121,39 @@ body {
   border-radius: 4.333333333333334px;
   background-clip: padding-box;
   background-color: #ffffff;
+  -webkit-transition: 200ms ease;
+  -moz-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+  -webkit-transform-origin: 50% 0 0;
+  -moz-transform-origin: 50% 0 0;
+  -o-transform-origin: 50% 0 0;
+  -ms-transform-origin: 50% 0 0;
+  transform-origin: 50% 0 0;
+}
+.jane .mouth.active {
+  -webkit-animation: growshrink 400ms infinite;
+  -moz-animation: growshrink 400ms infinite;
+  -o-animation: growshrink 400ms infinite;
+  animation: growshrink 400ms infinite;
+}
+.jane .mouth.active lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes growshrink{ 0% { height: 17.333333333333336px; } 50% { height: 52.00000000000001px; } 100% { height: 17.333333333333336px; }}
+@-moz-keyframes growshrink{ 0% { height: 17.333333333333336px; } 50% { height: 52.00000000000001px; } 100% { height: 17.333333333333336px; }}
+@-o-keyframes growshrink{ 0% { height: 17.333333333333336px; } 50% { height: 52.00000000000001px; } 100% { height: 17.333333333333336px; }}
+@keyframes growshrink{ 0% { height: 17.333333333333336px; } 50% { height: 52.00000000000001px; } 100% { height: 17.333333333333336px; };
+}
+.jane .mouth.active-remove {
+  -webkit-animation: growshrink 400ms infinite;
+  -moz-animation: growshrink 400ms infinite;
+  -o-animation: growshrink 400ms infinite;
+  animation: growshrink 400ms infinite;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+.jane .mouth.active-remove-active {
+  height: 17.33333333px;
 }

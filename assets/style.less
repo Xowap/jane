@@ -125,6 +125,9 @@ body {
   }
 
   .mouth {
+    @animation-time: 200ms;
+    @mouth-max-height: @mouth-height * 3;
+
     position: absolute;
 
     top: @mouth-to-top;
@@ -134,5 +137,22 @@ body {
     height: @mouth-height;
     .border-radius(@mouth-border-radius);
     background-color: @color;
+
+    .transition(@animation-time ease);
+    .transform-origin(50% 0 0);
+
+    &.active {
+      .keyframes(~'growshrink, 0% { height: @{mouth-height}; } 50% { height: @{mouth-max-height}; } 100% { height: @{mouth-height}; }');
+      .animation(growshrink (@animation-time * 2) infinite);
+    }
+
+    &.active-remove {
+      .animation(growshrink (@animation-time * 2) infinite);
+      .animation-iteration-count(1);
+    }
+
+    &.active-remove-active {
+      height: @mouth-height;
+    }
   }
 }

@@ -5,7 +5,7 @@
 (function (ng, SpeechSynthesisUtterance, speechSynthesis) {
     "use strict";
 
-    var jane = ng.module('jane', []);
+    var jane = ng.module('jane', ['ngAnimate']);
 
     jane.provider('speak', function () {
         // Private members
@@ -19,7 +19,7 @@
         var setConfig, $get;
 
         // Object bodies
-        Speak = function ($rootScope) {
+        Speak = function ($rootScope, $timeout) {
             // Private members
             var self = this;
 
@@ -46,8 +46,10 @@
                     }
                 });
 
-                console.log('saying ', msg);
-                speechSynthesis.speak(u);
+                $timeout(function () {
+                    console.log('saying ', msg);
+                    speechSynthesis.speak(u);
+                });
             };
 
             self.say = say;
@@ -58,8 +60,8 @@
             config = newConfig;
         };
 
-        $get = function ($rootScope) {
-            return new Speak($rootScope);
+        $get = function ($rootScope, $timeout) {
+            return new Speak($rootScope, $timeout);
         };
 
         selfP.setConfig = setConfig;
@@ -125,10 +127,10 @@
         selfP.$get = $get;
     });
 
-    jane.controller('MainCtrl', function ($scope, wakeUp, speak) {
-        speak.say('Hello master, I hope to serve you well');
+    jane.controller('MainCtrl', function ($scope, wakeUp, speak, $timeout) {
+        speak.say('Hello master!');
 
-        wakeUp.wakeMeUp(new Date(2014, 3, 25, 10, 0), [
+        wakeUp.wakeMeUp(new Date(2014, 4, 5, 9, 0), [
             {
                 from: -60,
                 frequency: 5,
@@ -150,5 +152,7 @@
                 template: "You are {} fucking minutes late"
             }
         ]);
+
+        $scope.speak = speak;
     });
 }(angular, SpeechSynthesisUtterance, speechSynthesis));
