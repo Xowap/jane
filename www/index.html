@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Jane</title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../assets/core.js"></script>
+</head>
+<body ng-app="jane">
+<div class="jane" ng-controller="MainCtrl">
+    <div class="eyeball left">
+        <div class="pupil"></div>
+    </div>
+    <div class="eyeball right">
+        <div class="pupil"></div>
+    </div>
+    <div class="tie"></div>
+    <div class="mouth" ng-class="{active: speak.saying > 0}"></div>
+
+    Saying = {{ speak.saying }}
+</div>
+</body>
+</html>
